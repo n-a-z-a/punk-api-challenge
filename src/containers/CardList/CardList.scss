@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+.beer-card-container {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
