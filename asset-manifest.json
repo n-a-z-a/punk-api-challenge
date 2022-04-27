@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/n-a-z-a/punk-api-challenge.git/static/css/main.f59ea921.css",
+    "main.js": "/n-a-z-a/punk-api-challenge.git/static/js/main.b7e3579c.js",
+    "index.html": "/n-a-z-a/punk-api-challenge.git/index.html",
+    "main.f59ea921.css.map": "/n-a-z-a/punk-api-challenge.git/static/css/main.f59ea921.css.map",
+    "main.b7e3579c.js.map": "/n-a-z-a/punk-api-challenge.git/static/js/main.b7e3579c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f59ea921.css",
+    "static/js/main.b7e3579c.js"
+  ]
+}
