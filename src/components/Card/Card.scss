@@ -2,14 +2,31 @@
 .beer-card {
     display: flex;
     flex-direction: column;
-    max-width: 200px;
-    width: 180px;
-    height: 180px;
+    max-width: 250px;
+    width: 220px;
+    height: 400px;
     border-radius: 3px;
-    overflow: hidden;
     text-align: center;
+    align-items: center;
+    border: 1px solid black;
 }
 
+.beer-card__heading {
+    font-size:3vh;
+    height: 9vh;
+    overflow:scroll;
+    margin-bottom: 2vh;
+}
 .beer-card__image {
-        object-fit: cover;
-    }
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 4vh;
+ }
+
+.beer-card__description {
+    width: 160px;
+    height: 10vh;
+    overflow: scroll;
+    font-size: 0.8rem;
+}

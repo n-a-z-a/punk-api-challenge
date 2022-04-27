@@ -5,9 +5,9 @@
   }
 
 .beer-card-container {
-    margin-top: 1rem;
+    margin-top: 4rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 2rem;
     justify-items: center;
 }
