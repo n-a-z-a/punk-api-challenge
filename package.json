@@ -2,7 +2,7 @@
   "name": "punk-api-challenge",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://github.com/n-a-z-a/punk-api-challenge",
+  "homepage":"https://n-a-z-a.github.io/punk-api-challenge",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
