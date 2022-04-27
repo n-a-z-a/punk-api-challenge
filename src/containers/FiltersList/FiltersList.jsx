@@ -1,5 +1,6 @@
 import React from 'react'
 import FilterItem from '../../components/FilterItem/FilterItem'
+import './FiltersList.scss'
 
 const FiltersList = ({
     isHighABV, 
@@ -11,7 +12,7 @@ const FiltersList = ({
   }) => {
 
   return (
-    <div>
+    <div className='filters-list'>
         <FilterItem 
           checkbox={isHighABV} 
           handleCheckbox={handleABVCheckbox} condition="high-abv"

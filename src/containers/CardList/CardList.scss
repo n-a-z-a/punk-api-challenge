@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+
 * {
     padding: 0;
     margin: 0;
@@ -5,9 +7,13 @@
   }
 
 .beer-card-container {
-    margin-top: 4rem;
+    border-top: 3vh solid $secondary-background;
+    margin-top: 12vh;
+    padding-top: 8vh;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     gap: 2rem;
     justify-items: center;
+    clear: both;
+    color: $color-primary;
 }

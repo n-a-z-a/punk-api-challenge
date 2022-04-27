@@ -6,9 +6,10 @@ const FilterItem = ({checkbox, handleCheckbox, condition, name}) => {
     <div>
       <label htmlFor={condition}>{name}</label>
       <input id={condition} type="checkbox" 
-          checked={checkbox}
-          onChange={handleCheckbox}
-           />
+        checked={checkbox}
+        onChange={handleCheckbox}
+        className="filter-item"
+      />
     </div>
     
   )

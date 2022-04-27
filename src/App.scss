@@ -1,0 +1,26 @@
+@use "./styles/variables" as *;
+
+* {
+    padding: 0;
+    margin: 0;
+    background-color: $primary-background,
+  }
+
+.page_title {
+    font-family: $primary-font;
+    font-size: 11vw;
+    max-height: auto;
+    text-align: center;
+    letter-spacing: 2vw;
+    margin-bottom: 1vh;
+    background-color: $secondary-background;
+    color: $primary-background
+}
+
+@media screen and (max-width: 992px) {
+    .page_title{
+        font-size: 18vw;
+        letter-spacing: 2vw;
+    }
+    
+  }

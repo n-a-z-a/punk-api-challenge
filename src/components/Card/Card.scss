@@ -1,31 +1,57 @@
+@use "../../styles/variables" as *;
 
 .beer-card {
     display: flex;
     flex-direction: column;
     max-width: 250px;
     width: 220px;
-    height: 400px;
+    height: 500px;
     border-radius: 3px;
     text-align: center;
     align-items: center;
 }
 
 .beer-card__heading {
-    font-size:3vh;
-    height: 9vh;
-    overflow:scroll;
+    font-family: $secondary-font;
+    font-size:5vh;
+    width: 100%;
+    height: 14vh;
     margin-bottom: 2vh;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
 }
+
+.beer-card__tagline {
+    font-size:2vh;
+    margin: 1vh 0vw;
+    font-family: $primary-font;
+    font-size: medium;
+}
+
 .beer-card__image {
     width: 100%;
-    max-height: 200px;
+    max-height: 180px;
     object-fit: contain;
-    margin-bottom: 4vh;
+    margin: 2vh ;
+ }
+
+ .beer-card__abv {
+     padding: 1% 4%;
+     border: 2px solid black;
+     border-radius: 0.8rem;
+     margin: 1vh 0vw;
  }
 
 .beer-card__description {
-    width: 160px;
-    height: 10vh;
+    margin-top: 1vh;
+    width: 220px;
+    height: 12vh;
     overflow: scroll;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    text-align:center;
+    font-family: $paragraph-font;
+    line-height: 1.3rem;
 }
