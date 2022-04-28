@@ -46,13 +46,14 @@ const Main = () => {
         return beerFirstBrewingDate < 2010
         }) 
 
-     const acidicBeers = beerArr.filter(beer => {
-        return beer.ph < 4
-        })
+    //  const acidicBeers = beerArr.filter(beer => {
+    //     return beer.ph < 4
+    //     })
 
 
     useEffect(() => {
         if (isClassic===true) {
+            
             setBeerArr(classicBeers)
         } else {
             fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
@@ -66,6 +67,9 @@ const Main = () => {
 
     useEffect(() => {
         if (isAcidic===true) {
+            const acidicBeers = beerArr.filter(beer => {
+                return beer.ph < 4
+                })
             setBeerArr(acidicBeers)
         } else {
             fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
