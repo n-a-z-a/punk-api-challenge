@@ -57,11 +57,11 @@ const Main = () => {
 
     useEffect(() => {
         if (isClassic===true) {
-            const ClassicBeers = beerArr.filter(beer => {
+            const classicBeers = beerArr.filter(beer => {
                 const beerFirstBrewingDate = beer.first_brewed.split('/')[1]
                 return beerFirstBrewingDate < 2010
             })
-            setBeerArr(ClassicBeers)
+            setBeerArr(classicBeers)
         } else {
             fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
             .then(response => response.json())
@@ -69,6 +69,7 @@ const Main = () => {
                 setBeerArr(beers)
             })
         }
+        // eslint-disable-next-line
     },[isClassic])
 
     useEffect(() => {
