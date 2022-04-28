@@ -4,6 +4,7 @@ import NavBar from '../NavBar/NavBar'
 
 const Main = () => {
     const [beerArr, setBeerArr] = useState([])
+    const [originalBeerArr, setOriginalBeerArr] = useState([])
     const [searchTerm, setSearchTerm] = useState("");
     const [isHighABV, setIsHighABV] = useState(false);
     const [isClassic, setIsClassic] = useState(false);
@@ -15,6 +16,7 @@ const Main = () => {
             .then(response => response.json())
             .then(beers => {
                 setBeerArr(beers)
+                setOriginalBeerArr(beers)
             })
     }, [])
 
@@ -36,55 +38,44 @@ const Main = () => {
         setIsAcidic(!isAcidic)
     }
 
+    const highABVBeers = originalBeerArr.filter(beer => {
+        return beer.abv > 6
+    })
+    
+    const classicBeers = originalBeerArr.filter(beer => {
+        const beerFirstBrewingDate = beer.first_brewed.split('/')[1]
+        return beerFirstBrewingDate < 2010
+        }) 
+    
+     const acidicBeers = originalBeerArr.filter(beer => {
+        return beer.ph < 4
+        })
+    
+
     // High Alcohol (ABV value greater than 6%)
     // Classic Range (Was first brewed before 2010)
     // High Acidity (pH lower than 4)
 
     useEffect(() => {
-        if (isHighABV===true) {
-            const highABVBeers = beerArr.filter(beer => {
-                return beer.abv > 6
-            })
+        if (isHighABV ===true && isClassic===false && isAcidic===false) {
             setBeerArr(highABVBeers)
-        } else {
-            fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
-            .then(response => response.json())
-            .then(beers => {
-                setBeerArr(beers)
-            })
-        }
-    },[isHighABV])
-
-    useEffect(() => {
-        if (isClassic===true) {
-            const classicBeers = beerArr.filter(beer => {
-                const beerFirstBrewingDate = beer.first_brewed.split('/')[1]
-                return beerFirstBrewingDate < 2010
-            })
+        } else if (isHighABV ===false && isClassic===true && isAcidic===false) {
             setBeerArr(classicBeers)
-        } else {
-            fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
-            .then(response => response.json())
-            .then(beers => {
-                setBeerArr(beers)
-            })
-        }
-    },[isClassic])
-
-    useEffect(() => {
-        if (isAcidic===true) {
-            const acidicBeers = beerArr.filter(beer => {
-                return beer.ph < 4
-            })
+        } else if (isHighABV ===false && isClassic===false && isAcidic===true) {
             setBeerArr(acidicBeers)
+        } else if (isHighABV ===true && isClassic===true && isAcidic===false) {
+            const highABVClassic = highABVBeers.filter(beer => classicBeers.includes(beer))
+            setBeerArr(highABVClassic)
+        } else if (isHighABV ===true && isClassic===false && isAcidic===true) {
+            const highABVAcidic = highABVBeers.filter(beer => acidicBeers.includes(beer))
+            setBeerArr(highABVAcidic)
+        } else if (isHighABV ===false && isClassic===true && isAcidic===true) {
+            const classicAcidic = classicBeers.filter(beer => acidicBeers.includes(beer))
+            setBeerArr(classicAcidic)
         } else {
-            fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
-            .then(response => response.json())
-            .then(beers => {
-                setBeerArr(beers)
-            })
+            setBeerArr(originalBeerArr)
         }
-    },[isAcidic])
+    },[isHighABV, isClassic, isAcidic])
     
 
     const filteredBeers = beerArr.filter(beer => {
