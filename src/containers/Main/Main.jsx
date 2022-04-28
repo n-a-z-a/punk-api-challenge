@@ -69,7 +69,6 @@ const Main = () => {
                 setBeerArr(beers)
             })
         }
-        // eslint-disable-next-line
     },[isClassic])
 
     useEffect(() => {
