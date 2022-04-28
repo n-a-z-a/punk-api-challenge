@@ -36,32 +36,28 @@ const Main = () => {
         setIsAcidic(!isAcidic)
     }
 
+    const highABVBeers = beerArr.filter(beer => {
+        return beer.abv > 6
+    })
+
+    const classicBeers = beerArr.filter(beer => {
+        const beerFirstBrewingDate = beer.first_brewed.split('/')[1]
+        return beerFirstBrewingDate < 2010
+        }) 
+
+     const acidicBeers = beerArr.filter(beer => {
+        return beer.ph < 4
+        })
+
     // High Alcohol (ABV value greater than 6%)
     // Classic Range (Was first brewed before 2010)
     // High Acidity (pH lower than 4)
 
-    useEffect(() => {
-        if (isHighABV===true) {
-            const highABVBeers = beerArr.filter(beer => {
-                return beer.abv > 6
-            })
-            setBeerArr(highABVBeers)
-        } else {
-            fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
-            .then(response => response.json())
-            .then(beers => {
-                setBeerArr(beers)
-            })
-        }
-    },[isHighABV])
+
 
     useEffect(() => {
         if (isClassic===true) {
-            const ClassicBeers = beerArr.filter(beer => {
-                const beerFirstBrewingDate = beer.first_brewed.split('/')[1]
-                return beerFirstBrewingDate < 2010
-            })
-            setBeerArr(ClassicBeers)
+            setBeerArr(classicBeers)
         } else {
             fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
             .then(response => response.json())
@@ -69,13 +65,11 @@ const Main = () => {
                 setBeerArr(beers)
             })
         }
+        // eslint-disable-next-line
     },[isClassic])
 
     useEffect(() => {
         if (isAcidic===true) {
-            const acidicBeers = beerArr.filter(beer => {
-                return beer.ph < 4
-            })
             setBeerArr(acidicBeers)
         } else {
             fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
@@ -84,8 +78,21 @@ const Main = () => {
                 setBeerArr(beers)
             })
         }
+        // eslint-disable-next-line
     },[isAcidic])
     
+    useEffect(() => {
+        if (isHighABV===true) {
+            setBeerArr(highABVBeers)
+        } else {
+            fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
+            .then(response => response.json())
+            .then(beers => {
+                setBeerArr(beers)
+            })
+        } 
+        // eslint-disable-next-line
+    }, [isHighABV])
 
     const filteredBeers = beerArr.filter(beer => {
         const beerNameLower = beer.name.toLowerCase();
